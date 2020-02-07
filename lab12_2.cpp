@@ -1,12 +1,13 @@
 #include <iostream>
 #include <cmath>
+#include <math.h>
+#include <iomanip>
 using namespace std;
 
 const int N = 30;
 const int M = 70;
 
 void updateImage(bool [][M],int,int,int);
-
 void showImage(const bool [][M]);
 
 int main()
@@ -23,3 +24,26 @@ int main()
 }
 
 // Write definition of updateImage() and showImage() here
+void updateImage(bool image1[N][M],int size,int x,int y){
+    
+    for(int i=0; i<N;i++){
+        for(int j=0; j<M;j++){
+            double WTF = ((i-x)*(i-x))+((j-y)*(j-y));
+            WTF = sqrt(WTF);
+            if(WTF<= size-1){image1[i][j]=1;}
+        }
+    }
+
+}
+
+void showImage(const bool image2[N][M]){
+    cout<<setfill('-')<<setw(72)<<endl ;
+     for(int i=0; i<N;i++){
+         for(int j=0; j<M;j++){
+             if(image2[i][j]==1){cout<<"*";}
+             else{cout<<" ";}
+         }
+         cout<<endl<<"|"<<setfill(' ')<<setw(71)<<"|"<<endl;
+     }
+     cout<<setfill('-')<<setw(72)<<"\n" ;
+}
